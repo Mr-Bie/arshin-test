@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as fs from "fs";
 import * as path from "path";
-const path = require('path');
 
 const schemaPrismaFileName = 'schema.prisma';
 const prismaDirectory = path.join('prisma/');
