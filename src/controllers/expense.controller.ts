@@ -7,7 +7,10 @@ export const createExpense = async (data: CreateExpenseDto) => {
     if (!user)
         throw new HttpException("user not found with this id!", 400);
 
-    return prisma.expense.create({data: {value: data.value, userId: data.userId}});
+    return prisma.$executeRawUnsafe(
+        `INSERT INTO "Expense" ("userId","value") VALUES (${data.userId}, ${data.value})`
+    )
+
 }
 
 export const updateExpense = async (data: UpdateExpenseDto) => {
@@ -16,5 +19,6 @@ export const updateExpense = async (data: UpdateExpenseDto) => {
     if (!expense)
         throw new HttpException("expense not found with this id!", 400);
 
-    return prisma.expense.update({where: {id: expenseId }, data: {value: Number(data.value)}});
-}
+    return prisma.$executeRawUnsafe(
+        `UPDATE "Expense" SET "value" = ${data.value} WHERE "id" = ${expenseId}`
+    )}
