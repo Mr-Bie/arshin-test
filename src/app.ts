@@ -6,6 +6,8 @@ import {Express, Request, Response} from "express";
 // import responseMiddleware from "./middlewares/response.middleware";
 import {errorHandlerMiddleware} from "./middlewares/error-handler.middleware";
 import morganMiddleware from "./middlewares/morgan.middleware";
+import router from "./routes/router";
+import loggerService from "./services/logger.service";
 
 export default class App {
     private readonly app: Express;
@@ -26,9 +28,14 @@ export default class App {
         // add morgan
         this.app.use(morganMiddleware);
 
+        // add all routes
+        this.app.use(router);
+
+        // error handler
         this.app.use(errorHandlerMiddleware);
+
         this.app.listen(this.port, () => {
-            console.log(`server running on port ${this.port}.`);
+            loggerService.info(`server running on port ${this.port}.`);
         });
     }
 
