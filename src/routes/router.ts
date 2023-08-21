@@ -1,5 +1,7 @@
 import {Router, Response} from "express";
 import userRouter from "./user.router";
+import expenseRouter from "./expense.router";
+
 const router: Router = Router();
 
 router.get("/", (req, res: Response) => {
@@ -7,5 +9,7 @@ router.get("/", (req, res: Response) => {
 })
 
 router.use("/user", userRouter);
+
+router.use("/expense", expenseRouter);
 
 export default router;
