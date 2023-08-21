@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:sync": "node ./prisma/makePrismaSchema.ts && npx prisma generate && npx prisma db push",
-    "dev": "nodemon -r dotenv/config index.ts",
+    "db:push": "ts-node prisma/generate-prisma-schema.ts && npx prisma generate && npx prisma db push",
+    "dev": "npm run db:push && nodemon -r dotenv/config index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
