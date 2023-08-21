@@ -3,4 +3,5 @@ model User {
   email         String      @unique
   name          String
   allExpenses   Int         @default(0)
+  expenses      Expense[]
 }
