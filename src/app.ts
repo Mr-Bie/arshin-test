@@ -1,7 +1,8 @@
 // Dependencies
 import * as express from "express";
 import {Express, Request, Response} from "express";
-
+import 'reflect-metadata';
+import 'es6-shim';
 // Utils
 // import responseMiddleware from "./middlewares/response.middleware";
 import {errorHandlerMiddleware} from "./middlewares/error-handler.middleware";
