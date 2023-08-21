@@ -57,15 +57,10 @@ const format = winston.format.combine(
 // In this example, we are using three different transports
 const transports = [
   new winston.transports.Console({
-    level: "error",
-    format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.colorize(),
-        winston.format.simple()
-    ),
+    level: "debug",
     handleRejections: true,
     handleExceptions: true,
-  } as FileTransportOptions),
+  }),
   new winston.transports.File({
     filename: "logs/http.log",
     level: "http",
